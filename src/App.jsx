@@ -132,10 +132,10 @@ function App() {
                 localStorage.setItem(`lastTimePost${user.id}`, postWithFormattedDate[postWithFormattedDate.length - 1].created_at);
                 return [...prevPosts, postWithFormattedDate[0]];
             });
-            setLoading(false);
             setAddedPost('');
             setPhotoFile(null)
         }
+        setLoading(false);
     };
 
     const deletePostUpdated = (deletePost) => {
