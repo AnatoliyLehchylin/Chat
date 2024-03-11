@@ -85,14 +85,14 @@ function ModalPhotoPost({addNewPost, photoFile, setPhotoFile, addedPost, setAdde
                 return;
             }
 
-            const maxSize = 6 * 1024 * 1024; // 5MB
-            if (file.size > maxSize) {
-                event.target.value = null;
-                setPhotoFile(null);
-                setIsValidUser(false);
-                setErrorMessage(`${dataText.errorPhoto}`);
-                return;
-            }
+            // const maxSize = 6 * 1024 * 1024; // 5MB
+            // if (file.size > maxSize) {
+            //     event.target.value = null;
+            //     setPhotoFile(null);
+            //     setIsValidUser(false);
+            //     setErrorMessage(`${dataText.errorPhoto}`);
+            //     return;
+            // }
             setIsValidUser(true);
             setErrorMessage("");
             const convertFile = await convertImageToBase64(file);
@@ -131,7 +131,7 @@ function ModalPhotoPost({addNewPost, photoFile, setPhotoFile, addedPost, setAdde
                             onChange={handleFileChange}
                         />
                         <label htmlFor="file-upload">
-                            <Button component="span" variant="outlined" size='small' sx={{marginLeft: '15px', fontSize: '10px'}}>
+                            <Button component="span" variant="outlined" size='small' sx={{ margin: '0 auto', fontSize: '10px'}}>
                                 {dataText.select}
                             </Button>
                         </label>

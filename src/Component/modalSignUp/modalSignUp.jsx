@@ -128,14 +128,14 @@ function ModalSignUp({language}) {
                 return;
             }
 
-            const maxSize = 2 * 1024 * 1024; // 2MB
-            if (file.size > maxSize) {
-                event.target.value = null;
-                setPhotoFileUser(null);
-                setIsValidUser(false);
-                setErrorMessage(`${dataText.errorAvatar}`);
-                return;
-            }
+            // const maxSize = 2 * 1024 * 1024; // 2MB
+            // if (file.size > maxSize) {
+            //     event.target.value = null;
+            //     setPhotoFileUser(null);
+            //     setIsValidUser(false);
+            //     setErrorMessage(`${dataText.errorAvatar}`);
+            //     return;
+            // }
             setIsValidUser(true);
             setErrorMessage("");
             const convertFile = await convertImageToBase64(file);
