@@ -64,6 +64,7 @@ function App() {
     const [language, setLanguage] = useState(localStorage.getItem('lang') || 'eng');
 
     const dataText = Data[language];
+    const audio = new Audio('/new_message_tone.mp3');
 
     const socket = io(import.meta.env.VITE_REACT_APP_API_URL);
     const dispatch = useDispatch();
@@ -189,10 +190,7 @@ function App() {
 
     useEffect(() => {
 
-        const audio = new Audio('Chat/public/new_message_tone.mp3');
-
         if (user.name) {
-
             socket.on('dataUpdated', (data) => {
                 audio.play();
                 addPostUpdated(data);
