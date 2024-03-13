@@ -188,13 +188,23 @@ function App() {
     }, [posts]);
 
     useEffect(() => {
+
+        const audio = new Audio('public/new_message_tone.mp3');
+
         if (user.name) {
-            socket.on('dataUpdated', addPostUpdated);
+
+            socket.on('dataUpdated', (data) => {
+                audio.play();
+                addPostUpdated(data);
+            });
+
+            // socket.on('dataUpdated', addPostUpdated);
             socket.on('dataDelete', deletePostUpdated);
             socket.on('dataEdit', editPostUpdated);
 
             return () => {
                 socket.off('dataUpdated', addPostUpdated);
+                audio.pause();
                 socket.off('dataDelete', deletePostUpdated);
                 socket.on('dataEdit', editPostUpdated);
                 socket.disconnect();
