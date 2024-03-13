@@ -64,7 +64,7 @@ function App() {
     const [language, setLanguage] = useState(localStorage.getItem('lang') || 'eng');
 
     const dataText = Data[language];
-    const audio = new Audio('/new_message_tone.mp3');
+    // const audio = new Audio('/new_message_tone.mp3');
 
     const socket = io(import.meta.env.VITE_REACT_APP_API_URL);
     const dispatch = useDispatch();
@@ -191,18 +191,19 @@ function App() {
     useEffect(() => {
 
         if (user.name) {
-            socket.on('dataUpdated', (data) => {
-                audio.play();
-                addPostUpdated(data);
-            });
 
-            // socket.on('dataUpdated', addPostUpdated);
+            // socket.on('dataUpdated', (data) => {
+            //     audio.play();
+            //     addPostUpdated(data);
+            // });
+
+            socket.on('dataUpdated', addPostUpdated);
             socket.on('dataDelete', deletePostUpdated);
             socket.on('dataEdit', editPostUpdated);
 
             return () => {
                 socket.off('dataUpdated', addPostUpdated);
-                audio.pause();
+                // audio.pause();
                 socket.off('dataDelete', deletePostUpdated);
                 socket.off('dataEdit', editPostUpdated);
                 socket.disconnect();
