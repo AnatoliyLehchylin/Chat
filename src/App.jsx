@@ -189,7 +189,7 @@ function App() {
 
     useEffect(() => {
 
-        const audio = new Audio('Chat/reactapp/public/new_message_tone.mp3');
+        const audio = new Audio('/public/new_message_tone.mp3');
 
         if (user.name) {
 
