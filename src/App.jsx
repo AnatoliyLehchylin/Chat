@@ -189,7 +189,7 @@ function App() {
 
     useEffect(() => {
 
-        const audio = new Audio('../public/new_message_tone.mp3');
+        const audio = new Audio('/new_message_tone.mp3');
 
         if (user.name) {
 
@@ -206,7 +206,7 @@ function App() {
                 socket.off('dataUpdated', addPostUpdated);
                 audio.pause();
                 socket.off('dataDelete', deletePostUpdated);
-                socket.on('dataEdit', editPostUpdated);
+                socket.off('dataEdit', editPostUpdated);
                 socket.disconnect();
             };
         }
